@@ -34,7 +34,7 @@ else
 
     # Launch Claude Code in the session
     # Add --dangerously-skip-permissions for fully autonomous headless mode
-    tmux send-keys -t "$SESSION" "cd /workspace && claude" Enter
+    tmux send-keys -t "$SESSION" "claude -dangerously-skip-permissions" Enter
 fi
 
 echo "[entrypoint] Starting ttyd on port 7681..."
@@ -50,6 +50,7 @@ echo "  WS protocol: send '1' + text to input, receive '0' + text for output"
 #   -W               : NOT used - we want writable (default)
 #   --max-clients 0  : unlimited clients (all see same session)
 exec ttyd \
+    -d \
     -p 7681 \
     --writable \
     -t fontSize=14 \

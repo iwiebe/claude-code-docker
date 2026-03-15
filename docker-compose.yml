@@ -8,8 +8,8 @@ services:
     ports:
       - "7681:7681"
     volumes:
-      - claude-agent-config: /root
-      - claude-agent-data: /workspace
+      - claude-agent-config:/root
+      - claude-agent-data:/workspace
     environment:
       - TERM=xterm-256color
       - COLORTERM=truecolor
